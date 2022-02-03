@@ -41,11 +41,7 @@ body {
 }
 
 .cover-container {
-  max-width: 42em;
-}
-
-.projects-container {
-  max-width: 50em;
+  max-width: 45em;
 }
 
 /*
