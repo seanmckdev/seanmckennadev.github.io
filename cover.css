@@ -62,7 +62,7 @@ body {
   height: auto;
   z-index: -10;
   margin: 0;
-  background: url('img/trees_background_tiltshift.jpg') left top no-repeat;
+  background: url('img/trees_background_tiltshift.jpg') center top no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
