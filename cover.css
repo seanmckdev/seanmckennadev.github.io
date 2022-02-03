@@ -44,6 +44,10 @@ body {
   max-width: 42em;
 }
 
+.projects-container {
+  max-width: 50em;
+}
+
 /*
  * Header
  */
