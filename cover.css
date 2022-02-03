@@ -32,11 +32,18 @@ body {
   width: 100%;
   margin: 0;
 
-  background: url(img/trees_background_tiltshift.jpg) no-repeat center center fixed; 
+  /*background: url(img/trees_background_tiltshift.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-size: cover;*/
+
+  background-image: url('img/trees_background_tiltshift.jpg');
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-position: left top;
+    position:absolute;
+    background-size: cover;
 
 }
 
