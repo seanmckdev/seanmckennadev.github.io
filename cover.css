@@ -24,12 +24,17 @@ html {
   height: 100%;
 }
 
-body {
+body:before {
   /*text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
   box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);*/
-
-  height: 100%;
+  position: fixed;
+  content: "";
+  display: block;
+  left: 0;
+  top: 0;
   width: 100%;
+  height: 100%;
+  z-index: -10;
   margin: 0;
 
   /*background: url(img/trees_background_tiltshift.jpg) no-repeat center center fixed; 
@@ -48,7 +53,6 @@ body {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-
 }
 
 .cover-container {
