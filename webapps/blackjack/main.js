@@ -1,13 +1,15 @@
 const config = {
-  type: Phaser.AUTO,
-  width: 800,
-  height: 600,
-  scale: {
+    type: Phaser.AUTO,
+    width: 800,
+    height: 600,
+    scale: {
             mode: Phaser.Scale.FIT,
             autoCenter: Phaser.Scale.CENTER_BOTH
         },
-  parent: 'game-container',
-  scene: { preload, create, update }
+    //backgroundColor: '#228B22',
+    parent: 'game-container',
+    transparent: true,
+    scene: { preload, create, update }
 };
 
 const game = new Phaser.Game(config);
@@ -291,7 +293,7 @@ function startGame() {
 }
 
 function canSplit() {
-    // Check if the player can split (two cards of the same rank and enough funds in the bank)
+    // Check if the player can split
     return playerHand.length === 2 &&
            playerHand[0].rank === playerHand[1].rank &&
            bank >= betMain;
@@ -346,18 +348,33 @@ function hit() {
 
 function checkPlayerBust() {
     const hand = activeHand === 'main' ? playerHand : playerSplitHand;
+
+    // Check if the active hand has busted
     if (calculateHand(hand) > 21) {
         messageText.textContent = activeHand === 'main' ? 'Main hand busts!' : 'Split hand busts!';
+
         if (activeHand === 'main' && playerSplitHand.length > 0) {
-            // Switch to split hand if main hand busts
+            // Switch to the split hand if the main hand busts and a split hand exists
             activeHand = 'split';
             renderHands.call(this);
         } else {
+            // Both hands are done, or no split hand exists
             hitButton.disabled = true;
             standButton.disabled = true;
-            dealButton.disabled = false;
             splitButton.disabled = true;
             doubleButton.disabled = true;
+
+            nextRoundButton.disabled = false;
+            dealButton.disabled = true;
+
+            if (activeHand === 'main') {
+                bank -= betMain;
+            } else if (activeHand === 'split') {
+                bank -= betSplit;
+            }
+
+            updateBankUI();
+            updateBetUI();
         }
     }
 }
