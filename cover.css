@@ -66,3 +66,19 @@ body {
   color: #fff;
   border-bottom-color: #fff;
 }
+
+/*
+* Blackjack game
+*/
+
+#game-container {
+  width: 100%;
+}
+#ui {
+  /*margin: 20px;*/
+  width: 100%;
+}
+button {
+  padding: 10px 20px;
+  margin: 5px;
+}

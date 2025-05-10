@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Projects page for Sean McKenna">
+    <title>Sean McKenna | Projects</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cover/">
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.88.2/dist/phaser.min.js"></script>
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="../../bootstrap.min.css" rel="stylesheet">
+
+    <!-- Navbar-->
+    <link href="../../cover.css" rel="stylesheet">
+  </head>
+<body class="d-flex text-center text-white bg-dark">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column ">
+  <header class="mb-auto">
+    <div>
+      <h3 class="float-md-start mb-0">Sean McKenna</h3>
+      <nav class="nav nav-masthead justify-content-center float-md-end">
+        <a class="nav-link" href="../../">Home</a>
+        <a class="nav-link" href="../../projects">Projects</a>
+        <a class="nav-link active" aria-current="page" href=".">Web Apps</a>
+        <a class="nav-link" href="mailto:&#115;&#101;&#97;&#110;&#64;&#115;&#101;&#97;&#110;&#109;&#99;&#107;&#46;&#110;&#101;&#116;">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <!-- Navbar-->
+
+  <!-- Main Body-->
+  <main class="my-5 px-5">
+    
+    <div class="p-3 border border-light rounded">
+      <div id="game-container"></div>
+      <div id="ui">
+        <h2>Dealer's Hand: <span id="dealer-score">0</span></h2>
+        <h2>Your Hand: <span id="player-score">0</span></h2>
+        <div id="message"></div>
+        
+        <!-- Bank Display -->
+        <div class="mb-3">
+          <h3>Bank: $<span id="bank-amount">1000</span></h3>
+          <h4>Current Bet: <span id="current-bet">0</span></h4>
+        </div>
+        
+        <!-- Betting Button -->
+        <div class="mb-3">
+          <button id="bet-5">Bet $5</button>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div>
+          <button id="deal">Deal</button>
+          <button id="hit" disabled>Hit</button>
+          <button id="stand" disabled>Stand</button>
+          <button id="split" disabled>Split</button>
+          <button id="double" disabled>Double</button>
+          <button id="next-round" disabled>Next Round</button>
+        </div>
+      </div>
+      <script src="main.js"></script>
+    </div>
+    <div class="pb-4"></div>
+
+  </main>
+  <!-- Main Body-->
+
+  <footer class="mt-auto text-white-50">
+    <!-- <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p> -->
+  </footer>
+</div>
+</body>
+</html>
