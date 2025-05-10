@@ -131,10 +131,15 @@ function createDeck() {
     deck = [];
     for (let suit of suits) {
         for (let rank of ranks) {
-        deck.push({ rank, suit });
+            deck.push({ rank, suit });
         }
     }
-    deck = deck.sort(() => Math.random() - 0.5);
+
+    // Fisher-Yates Shuffle
+    for (let i = deck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1)); // Random index from 0 to i
+        [deck[i], deck[j]] = [deck[j], deck[i]]; // Swap elements
+    }
 }
 
 function calculateHand(hand) {
@@ -271,10 +276,16 @@ function startGame() {
     hitButton.disabled = false;
     standButton.disabled = false;
     splitButton.disabled = !canSplit(); // Enable split button if splitting is possible
-    doubleButton.disabled = bank < betMain; // Enable "Double" button only if the player has enough funds
+    doubleButton.disabled = bank < betMain;
     bet5Button.disabled = true; // Disable betting after the round starts
     bet10Button.disabled = true;
     bet25Button.disabled = true;
+
+    // Check for blackjack
+    if (calculateHand(playerHand) === 21) {
+        messageText.textContent = 'Blackjack! Automatically standing.';
+        stand.call(this); // Automatically stand
+    }
 
     checkPlayerBust.call(this);
 }
@@ -295,7 +306,6 @@ function split() {
     // Move one card to the split hand
     playerSplitHand.push(playerHand.pop());
 
-    // Deduct the same bet amount from the bank for the split hand
     betSplit = betMain;
     bank -= betSplit;
 
