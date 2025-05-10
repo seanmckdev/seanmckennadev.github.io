@@ -62,8 +62,14 @@ function create() {
     splitButton.disabled = true;
     doubleButton = document.getElementById('double');
     doubleButton.disabled = true;
+    
     bet5Button = document.getElementById('bet-5');
     bet5Button.disabled = false;
+    bet10Button = document.getElementById('bet-10');
+    bet10Button.disabled = false;
+    bet25Button = document.getElementById('bet-25');
+    bet25Button.disabled = false;
+
     nextRoundButton = document.getElementById('next-round');
     nextRoundButton.disabled = true;
 
@@ -78,6 +84,8 @@ function create() {
     splitButton.addEventListener('click', () => split.call(this));
     doubleButton.addEventListener('click', () => double.call(this));
     bet5Button.addEventListener('click', () => placeBet(5));
+    bet10Button.addEventListener('click', () => placeBet(10));
+    bet25Button.addEventListener('click', () => placeBet(25));
     nextRoundButton.addEventListener('click', () => nextRound.call(this));
 
     // Create cardMap
@@ -265,6 +273,8 @@ function startGame() {
     splitButton.disabled = !canSplit(); // Enable split button if splitting is possible
     doubleButton.disabled = bank < betMain; // Enable "Double" button only if the player has enough funds
     bet5Button.disabled = true; // Disable betting after the round starts
+    bet10Button.disabled = true;
+    bet25Button.disabled = true;
 
     checkPlayerBust.call(this);
 }
@@ -421,6 +431,8 @@ function determineWinner() {
     // Disable the "Deal" button until the next round starts
     dealButton.disabled = true;
     bet5Button.disabled = true;
+    bet10Button.disabled = true;
+    bet25Button.disabled = true;
 }
 
 function placeBet(amount) {
@@ -491,6 +503,8 @@ function nextRound() {
 
     // Enable betting
     bet5Button.disabled = false;
+    bet10Button.disabled = false;
+    bet25Button.disabled = false;
     dealButton.disabled = false;
     nextRoundButton.disabled = true;
 
