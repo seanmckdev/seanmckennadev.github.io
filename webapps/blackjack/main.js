@@ -6,7 +6,6 @@ const config = {
             mode: Phaser.Scale.FIT,
             autoCenter: Phaser.Scale.CENTER_BOTH
         },
-    //backgroundColor: '#228B22',
     parent: 'game-container',
     transparent: true,
     scene: { preload, create, update }
@@ -31,7 +30,7 @@ let cardMap = {}; // Maps rank+suit to frame index
 const suits = ['♠', '♥', '♣', '♦'];
 const ranks = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
 
-let playerSplitHand = []; // Array for the player's split hand
+let playerSplitHand = []; // For the player's split hand
 let activeHand = 'main'; // Tracks the active hand: 'main' or 'split'
 
 let alwaysDealPair = false; // Toggle for testing: always deal the player a pair of cards
@@ -39,7 +38,7 @@ let alwaysDealPair = false; // Toggle for testing: always deal the player a pair
 let mainHandStood = false; // Tracks if the main hand has been stood on
 let splitHandStood = false; // Tracks if the split hand has been stood on
 
-const grayOverlayAlpha = 0.45; // Global variable to control the alpha of gray overlays
+const grayOverlayAlpha = 0.45; // Variable to control the alpha of gray overlays
 
 let bank = 1000; // Starting bank amount
 let minBet = 5; // Minimum bet amount
@@ -316,6 +315,7 @@ function split() {
     renderHands.call(this);
 
     splitButton.disabled = true;
+    doubleButton.disabled = true; // Enable double button for the split hand
 }
 
 function hit() {
@@ -460,6 +460,8 @@ function determineWinner() {
     bet5Button.disabled = true;
     bet10Button.disabled = true;
     bet25Button.disabled = true;
+
+    hideActionButtons();
 }
 
 function placeBet(amount) {
@@ -475,7 +477,7 @@ function placeBet(amount) {
     }
 
     bank -= amount;
-    messageText.textContent = `You bet $${amount}. Remaining bank: $${bank}`;
+    //messageText.textContent = `You bet $${amount}. Remaining bank: $${bank}`;
     updateBankUI();
     updateBetUI();
 }
@@ -499,9 +501,9 @@ function updateBankUI() {
 function updateBetUI() {
     const betText = document.getElementById('current-bet');
     if (betSplit > 0) {
-        betText.textContent = `$${betMain} / $${betSplit}`; // Show both bets if splitting
+        betText.textContent = `${betMain} / $${betSplit}`; // Show both bets if splitting
     } else {
-        betText.textContent = `$${betMain}`;
+        betText.textContent = `${betMain}`;
     }
 }
 
@@ -538,6 +540,7 @@ function nextRound() {
     messageText.textContent = 'Place your bets for the next round!';
     updateBetUI();
     updateBankUI();
+    showActionButtons();
 }
 
 function double() {
@@ -571,4 +574,30 @@ function double() {
     // Force the player to stand after doubling
     messageText.textContent = activeHand === 'main' ? 'Main hand doubled and forced to stand.' : 'Split hand doubled and forced to stand.';
     stand.call(this);
+}
+
+function hideActionButtons() {
+    hitButton.classList.add('hidden');
+    standButton.classList.add('hidden');
+    splitButton.classList.add('hidden');
+    doubleButton.classList.add('hidden');
+    dealButton.classList.add('hidden');
+    bet5Button.classList.add('hidden');
+    bet10Button.classList.add('hidden');
+    bet25Button.classList.add('hidden');
+
+    nextRoundButton.classList.remove('hidden');
+}
+
+function showActionButtons() {
+    hitButton.classList.remove('hidden');
+    standButton.classList.remove('hidden');
+    splitButton.classList.remove('hidden');
+    doubleButton.classList.remove('hidden');
+    dealButton.classList.remove('hidden');
+    bet5Button.classList.remove('hidden');
+    bet10Button.classList.remove('hidden');
+    bet25Button.classList.remove('hidden');
+    
+    nextRoundButton.classList.add('hidden');
 }
