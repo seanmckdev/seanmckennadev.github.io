@@ -375,6 +375,7 @@ function checkPlayerBust() {
 
             updateBankUI();
             updateBetUI();
+            hideActionButtons();
         }
     }
 }
@@ -407,7 +408,7 @@ function stand() {
                 dealerHand.push(deck.pop());
                 renderHands.call(this);
                 dealerPlay();
-            }, dealerActionDelay);
+            }, dealerActionDelay*2);
         } else {
             renderHands.call(this);
             determineWinner.call(this);
