@@ -430,12 +430,12 @@ function determineWinner() {
         resultMessage += 'Main hand busts! Dealer wins!';
     } else if (mainHandScore > dealerScore || dealerScore > 21) {
         resultMessage += 'Main hand wins!';
-        payout('main', 2); // payout
+        payout('main', 2);
     } else if (dealerScore > mainHandScore) {
         resultMessage += 'Dealer wins against main hand!';
     } else {
         resultMessage += 'Main hand pushes!';
-        payout('main', 1); // push
+        payout('main', 1); // Push
     }
 
     // Evaluate the split hand (if it exists)
@@ -444,16 +444,18 @@ function determineWinner() {
             resultMessage += ' Split hand busts! Dealer wins!';
         } else if (splitHandScore > dealerScore || dealerScore > 21) {
             resultMessage += ' Split hand wins!';
-            payout('split', 2); // payout
+            payout('split', 2);
         } else if (dealerScore > splitHandScore) {
             resultMessage += ' Dealer wins against split hand!';
         } else {
             resultMessage += ' Split hand pushes!';
-            payout('split', 1); // push
+            payout('split', 1); // Push
         }
     }
 
     messageText.textContent = resultMessage;
+
+    // Enable the "Next Round" button
     nextRoundButton.disabled = false;
 
     // Disable the "Deal" button until the next round starts
@@ -531,7 +533,6 @@ function nextRound() {
         messageText.textContent = 'Not enough funds to place the minimum bet!';
     }
 
-    // Enable betting
     bet5Button.disabled = false;
     bet10Button.disabled = false;
     bet25Button.disabled = false;
