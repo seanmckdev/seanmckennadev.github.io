@@ -109,3 +109,46 @@ button {
 .hidden {
   display: none !important;
 }
+
+/* Remove spinner controls for number inputs */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  appearance: textfield; /* Standard property for compatibility */
+  -moz-appearance: textfield; /* For Firefox */
+}
+
+.d-flex.flex-row {
+  display: flex;
+  justify-content: space-between; /* Space items evenly across the container */
+  align-items: center; /* Vertically align items */
+}
+
+.flex-item {
+  flex: 1; /* Default size for all items */
+  text-align: center; /* Center-align text inside each item */
+}
+
+.flex-item:first-child {
+  flex: 1.5; /* Make the first item slightly wider */
+}
+
+.flex-item:not(:last-child) {
+  border-right: 2px solid #ccc; /* Add a vertical line between items */
+  height: 100%; /* Ensure the border spans the full height of the container */
+  box-sizing: border-box; /* Include padding and border in the element's dimensions */
+}
+
+.highlight {
+  font-weight: bold;
+  background-color: white;
+  color: black;
+}
+
+.bold {
+  font-weight: bold;
+}

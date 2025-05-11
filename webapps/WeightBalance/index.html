@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Weight and balance calculator">
+    <title>Sean McKenna | Web Apps</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/cover/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="../../bootstrap.min.css" rel="stylesheet">
+
+    <!-- Navbar-->
+    <link href="../../cover.css" rel="stylesheet">
+  </head>
+<body class="d-flex text-center text-white bg-dark">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column ">
+  <header class="mb-auto">
+    <div>
+      <h3 class="float-md-start mb-0">Sean McKenna</h3>
+      <nav class="nav nav-masthead justify-content-center float-md-end">
+        <a class="nav-link" href="../../">Home</a>
+        <a class="nav-link" href="../../projects">Projects</a>
+        <a class="nav-link active" aria-current="page" href="../">Web Apps</a>
+        <a class="nav-link" href="mailto:&#115;&#101;&#97;&#110;&#64;&#115;&#101;&#97;&#110;&#109;&#99;&#107;&#46;&#110;&#101;&#116;">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <!-- Navbar-->
+
+  <!-- Main Body-->
+  <main class="my-5 px-10 md-auto">
+    <script src="main.js"></script>
+    <div class="p-3 border border-light rounded">
+      <h1 id="tailNumber">N?????</h1>
+      <div class="d-flex gap-5 align-items-center justify-content-sm-center">
+        <!-- Column 1: Tail number dropdown -->
+        <div>
+          <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+            <option selected>Choose aircraft...</option>
+            <option>N138ME</option>
+            <option>N211TD</option>
+            <option>N2477F</option>
+            <option>N427EP</option>
+            <option>N664CA</option>
+            <option>N9501F</option>
+            <option>N98436</option>
+          </select>
+        </div>
+
+        <!-- Column 2: R/S Model radio buttons -->
+        <div class="d-flex flex-column">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="gridRadios" id="rModelSel" value="option1" checked>
+            <label class="form-check-label" for="gridRadios1">R Model</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="gridRadios" id="sModelSel" value="option2">
+            <label class="form-check-label" for="gridRadios2">S Model</label>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div class="mb-2 d-flex gap-5 justify-content-sm-center align-items-center">
+          <div class="form-outline" style="width: 40%;">
+            <label for="basicEmptyWeightInput" class="form-label">Basic Empty Weight</label>
+            <input type="number" id="basicEmptyWeightInput" class="number-input form-control" placeholder="B.E.W." />
+          </div>
+          <div class="form-outline" style="width: 40%;">
+            <label for="armInput" class="form-label">Arm (in)</label>
+            <input type="number" id="armInput" class="number-input form-control" placeholder="Arm" />
+          </div>
+          <div class="form-outline" style="width: 40%;">
+            <label for="momentInput" class="form-label">Moment (lb-in)</label>
+            <input type="number" id="momentInput" class="number-input form-control" placeholder="Moment" />
+          </div>
+      </div>
+      <br>
+      <div class="mb-2 d-flex gap-5 justify-content-sm-center align-items-center">
+          <div class="form-outline" style="width: 40%;">
+            <label for="mainFuelInput" class="form-label">Main Fuel</label>
+            <input type="number" id="mainFuelInput" class="number-input form-control" placeholder="Main fuel (gallons)" />
+          </div>
+          <div class="form-outline" style="width: 40%;">
+            <label for="fuelBurnInput" class="form-label">Fuel Burn</label>
+            <input type="number" id="fuelBurnInput" class="number-input form-control" placeholder="Fuel burn (gallons)" />
+          </div>
+          <div class="form-outline" style="width: 40%;">
+            <label for="fuelBurnRunupInput" class="form-label">Fuel Burn Taxi, Run-Up</label>
+            <input type="number" id="fuelBurnRunupInput" class="number-input form-control" placeholder="Fuel burn (gallons)" />
+          </div>
+      </div>
+      <br>
+      <br>
+      <p class="lead">Front seats</p>
+      <div class="mb-2 mx-5 d-flex gap-5 justify-content-between align-items-center">
+          <div class="form-outline" style="width: 40%;">
+            <input type="number" id="leftFrontInput" class="number-input form-control" placeholder="Left seat" />
+          </div>
+          <div class="form-outline" style="width: 40%;">
+            <input type="number" id="rightFrontInput" class="number-input form-control" placeholder="Right seat" />
+          </div>
+      </div>
+      <br>
+      <p class="lead">Back seats</p>
+      <div class="mb-2 mx-5 d-flex gap-5 justify-content-between align-items-center">
+          <div class="form-outline" style="width: 40%;">
+            <input type="number" id="leftBackInput" class="number-input form-control" placeholder="Left seat" />
+          </div>
+          <div class="form-outline" style="width: 40%;">
+            <input type="number" id="rightBackInput" class="number-input form-control" placeholder="Right seat" />
+          </div>
+      </div>
+      <br>
+      <p class="lead">Baggage Area 1</p>
+      <div class="mb-2 d-flex gap-5 justify-content-sm-center align-items-center">
+          <div class="form-outline" style="width: 50%;">
+            <input type="number" id="forwardBaggageInput" class="number-input form-control" placeholder="Baggage area" />
+          </div>
+      </div>
+      <br>
+      <p class="lead">Baggage Area 2</p>
+      <div class="mb-2 d-flex gap-5 justify-content-sm-center align-items-center">
+          <div class="form-outline" style="width: 50%;">
+            <input type="number" id="aftBaggageInput" class="number-input form-control" placeholder="Baggage area" />
+          </div>
+      </div>
+    </div>
+
+    <div class="my-2 p-3 border border-light rounded">
+       <button id="calculateWB">Calculate</button>
+    </div>
+
+    <div class="my-2 p-3 border border-light rounded">
+      <div class="d-flex flex-row border border-light rounded">
+        <div class="p-2 flex-item highlight">ITEM</div>
+        <div class="p-2 flex-item highlight">WEIGHT (lbs)</div>
+        <div class="p-2 flex-item highlight">ARM (in)</div>
+        <div class="p-2 flex-item highlight">MOMENT (lb-in)</div>
+      </div>
+      <br>
+      <div class="d-flex flex-row border border-light" id="row-basic-empty-weight">
+        <div class="p-2 flex-item">Basic Empty Weight</div>
+        <div class="p-2 flex-item" id="weight-basic-empty-weight">0</div>
+        <div class="p-2 flex-item" id="arm-basic-empty-weight">0</div>
+        <div class="p-2 flex-item" id="moment-basic-empty-weight">0</div>
+      </div>
+
+      <div class="d-flex flex-row border border-light" id="row-front-seats">
+        <div class="p-2 flex-item">Front Seats</div>
+        <div class="p-2 flex-item" id="weight-front-seats">0</div>
+        <div class="p-2 flex-item" id="arm-front-seats">0</div>
+        <div class="p-2 flex-item" id="moment-front-seats">0</div>
+      </div>
+
+      <div class="d-flex flex-row border border-light" id="row-rear-seats">
+        <div class="p-2 flex-item">Rear Seats</div>
+        <div class="p-2 flex-item" id="weight-rear-seats">0</div>
+        <div class="p-2 flex-item" id="arm-rear-seats">0</div>
+        <div class="p-2 flex-item" id="moment-rear-seats">0</div>
+      </div>
+
+      <div class="d-flex flex-row border border-light" id="row-forward-baggage">
+        <div class="p-2 flex-item">Forward Baggage</div>
+        <div class="p-2 flex-item" id="weight-forward-baggage">0</div>
+        <div class="p-2 flex-item" id="arm-forward-baggage">0</div>
+        <div class="p-2 flex-item" id="moment-forward-baggage">0</div>
+      </div>
+
+      <div class="d-flex flex-row border border-light" id="row-aft-baggage">
+        <div class="p-2 flex-item">Aft Baggage</div>
+        <div class="p-2 flex-item" id="weight-aft-baggage">0</div>
+        <div class="p-2 flex-item" id="arm-aft-baggage">0</div>
+        <div class="p-2 flex-item" id="moment-aft-baggage">0</div>
+      </div>
+
+      <div class="d-flex flex-row border border-light" id="row-zero-fuel-weight">
+        <div class="p-2 flex-item bold">ZERO FUEL WEIGHT</div>
+        <div class="p-2 flex-item" id="weight-zero-fuel-weight">0</div>
+        <div class="p-2 flex-item" id="arm-zero-fuel-weight">0</div>
+        <div class="p-2 flex-item" id="moment-zero-fuel-weight">0</div>
+      </div>
+
+      <div class="d-flex flex-row border border-light" id="row-main-fuel">
+        <div class="p-2 flex-item">Main Fuel: 53 Gallons</div>
+        <div class="p-2 flex-item" id="weight-main-fuel">0</div>
+        <div class="p-2 flex-item" id="arm-main-fuel">0</div>
+        <div class="p-2 flex-item" id="moment-main-fuel">0</div>
+      </div>
+
+      <div class="d-flex flex-row border border-light" id="row-ramp-weight">
+        <div class="p-2 flex-item bold">RAMP WEIGHT</div>
+        <div class="p-2 flex-item" id="weight-ramp-weight">0</div>
+        <div class="p-2 flex-item" id="arm-ramp-weight">0</div>
+        <div class="p-2 flex-item" id="moment-ramp-weight">0</div>
+      </div>
+
+      <div class="d-flex flex-row border border-light" id="row-fuel-run-up">
+        <div class="p-2 flex-item">Fuel: Start, Taxi, Run-up</div>
+        <div class="p-2 flex-item" id="weight-fuel-run-up">0</div>
+        <div class="p-2 flex-item" id="arm-fuel-run-up">0</div>
+        <div class="p-2 flex-item" id="moment-fuel-run-up">0</div>
+      </div>
+
+      <div class="d-flex flex-row border border-light" id="row-takeoff-weight">
+        <div class="p-2 flex-item highlight">TAKEOFF WEIGHT</div>
+        <div class="p-2 flex-item" id="weight-takeoff-weight">0</div>
+        <div class="p-2 flex-item" id="arm-takeoff-weight">0</div>
+        <div class="p-2 flex-item" id="moment-takeoff-weight">0</div>
+      </div>
+
+      <div class="d-flex flex-row border border-light" id="row-fuel-burn">
+        <div class="p-2 flex-item">Fuel Burn: 20 Gallons</div>
+        <div class="p-2 flex-item" id="weight-fuel-burn">0</div>
+        <div class="p-2 flex-item" id="arm-fuel-burn">0</div>
+        <div class="p-2 flex-item" id="moment-fuel-burn">0</div>
+      </div>
+
+      <div class="d-flex flex-row border border-light" id="row-landing-weight">
+        <div class="p-2 flex-item highlight">LANDING WEIGHT</div>
+        <div class="p-2 flex-item" id="weight-landing-weight">0</div>
+        <div class="p-2 flex-item" id="arm-landing-weight">0</div>
+        <div class="p-2 flex-item" id="moment-landing-weight">0</div>
+      </div>
+    </div>
+
+    <div class="my-2 p-3 border border-light rounded">
+      <div class="d-flex flex-row border border-light">
+        <div class="p-2 flex-item bold">Maneuvering Speed at Takeoff-Weight</div>
+        <div class="p-2 flex-item" id="va-takeoff">0</div>
+      </div>
+      <div class="d-flex flex-row border border-light">
+        <div class="p-2 flex-item bold">Maneuvering Speed at Landing-Weight</div>
+        <div class="p-2 flex-item" id="va-landing">0</div>
+      </div>
+    </div>
+    
+    <div class="pb-4"></div>
+
+  </main>
+  <!-- Main Body-->
+
+  <footer class="mt-auto text-white-50">
+    <!-- <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p> -->
+  </footer>
+</div>
+</body>
+</html>
