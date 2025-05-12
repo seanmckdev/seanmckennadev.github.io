@@ -21,6 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const calculateButton = document.getElementById('calculateWB');
     const rModelRadio = document.getElementById('rModelSel');
     const sModelRadio = document.getElementById('sModelSel');
+    const mainFuelInput = document.getElementById('mainFuelInput');
+    const fuelBurnInput = document.getElementById('fuelBurnInput');
+    const labelMainFuel = document.getElementById('label-main-fuel');
+    const labelFuelBurn = document.getElementById('label-fuel-burn');
 
     // Function to validate the input value
     function validateInput(event) {
@@ -37,6 +41,22 @@ document.addEventListener('DOMContentLoaded', () => {
         input.addEventListener('blur', validateInput);
         input.addEventListener('change', validateInput);
     });
+
+    // Set placeholder text for mobile
+    function updatePlaceholders() {
+        if (window.innerWidth <= 768) { // Mobile screen size
+            mainFuelInput.placeholder = "(Gallons)";
+            fuelBurnInput.placeholder = "(Gallons)";
+            fuelBurnRunupInput.placeholder = "(Gallons)";
+        } else {
+            mainFuelInput.placeholder = "Main fuel (gallons)";
+            fuelBurnInput.placeholder = "Fuel burn (gallons)";
+            fuelBurnRunupInput.placeholder = "Fuel burn (gallons)";
+        }
+    }
+
+    updatePlaceholders();
+    window.addEventListener('resize', updatePlaceholders);
 
     // Update the inputs and tail number based on the selected aircraft
     aircraftSelector.addEventListener('change', () => {
@@ -86,7 +106,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     calculateButton.addEventListener('click', calculateWB);
 
-    
+    // Function to update the Main Fuel label
+    mainFuelInput.addEventListener('input', () => {
+        const gallons = Number(mainFuelInput.value) || 0; // Default to 0 if input is empty or invalid
+        labelMainFuel.innerHTML = `Main Fuel: <b>${gallons}</b> Gallons`;
+    });
+
+    // Function to update the Fuel Burn label
+    fuelBurnInput.addEventListener('input', () => {
+        const gallons = Number(fuelBurnInput.value) || 0; // Default to 0 if input is empty or invalid
+        labelFuelBurn.innerHTML = `Fuel Burn: <b>${gallons}</b> Gallons`;
+    });
+
     function calculateWB() {
     // Helper function to format numbers
     function formatNumber(value) {

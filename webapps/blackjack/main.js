@@ -1,10 +1,10 @@
 const config = {
     type: Phaser.AUTO,
-    width: 800,
-    height: 600,
+    width: 600,
+    height: 500,
     scale: {
             mode: Phaser.Scale.FIT,
-            autoCenter: Phaser.Scale.CENTER_BOTH
+            autoCenter: Phaser.Scale.AUTO
         },
     parent: 'game-container',
     transparent: true,
@@ -13,15 +13,15 @@ const config = {
 
 const game = new Phaser.Game(config);
 
-let scale = 3; // Scale factor for card sprites
+let scale = 2; // Scale factor for card sprites
 let cardWidth = 48;
 let cardHeight = 64;
 
 let deck = [];
 let playerHand = [];
 let dealerHand = [];
-let dealerSecondCardHidden = true; // Track whether the dealer's second card is hidden
-const dealerActionDelay = 250; // Delay in milliseconds for dealer's actions
+let dealerSecondCardHidden = true;
+const dealerActionDelay = 250;
 
 let dealButton, hitButton, standButton, splitButton, doubleButton;
 let messageText, dealerScoreText, playerScoreText;
@@ -35,8 +35,8 @@ let activeHand = 'main'; // Tracks the active hand: 'main' or 'split'
 
 let alwaysDealPair = false; // Toggle for testing: always deal the player a pair of cards
 
-let mainHandStood = false; // Tracks if the main hand has been stood on
-let splitHandStood = false; // Tracks if the split hand has been stood on
+let mainHandStood = false;
+let splitHandStood = false;
 
 const grayOverlayAlpha = 0.45; // Variable to control the alpha of gray overlays
 
@@ -47,7 +47,6 @@ let betSplit = 0; // Current split bet amount
 
 function preload() {
     // TODO: load sound effects
-    // this.load.audio('deal', 'assets/deal.mp3');
     this.load.spritesheet('cards', 'assets/cards.png', { frameWidth: 48, frameHeight: 64 });
     this.load.image('cardBack', 'assets/cardBack.png');
 }
@@ -282,9 +281,10 @@ function startGame() {
     bet10Button.disabled = true;
     bet25Button.disabled = true;
 
+    messageText.textContent = "Player's turn";
     // Check for blackjack
     if (calculateHand(playerHand) === 21) {
-        messageText.textContent = 'Blackjack! Automatically standing.';
+        messageText.textContent = 'Blackjack!';
         stand.call(this); // Automatically stand
     }
 
