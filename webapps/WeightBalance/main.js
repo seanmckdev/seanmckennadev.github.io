@@ -2,8 +2,8 @@
 const aircraftData = {
     N138ME: { weight: 1647.2, arm: 40.25, moment: 66299.8, model: 'S' },
     N211TD: { weight: 1667.5, arm: 39.4483, moment: 65780.12, model: 'S' },
-    N2477F: { weight: 1720.6, arm: 41.76, moment: 71850.5, model: 'R' },
-    N427EP: { weight: 1657.42, arm: 39.36, moment: 65239.62, model: 'R' },
+    N2477F: { weight: 1720.6, arm: 41.76, moment: 71850.5, model: 'S' },
+    N427EP: { weight: 1657.42, arm: 39.36, moment: 65239.62, model: 'S' },
     N664CA: { weight: 1753.37, arm: 41.63756, moment: 73006.06, model: 'R' },
     N9501F: { weight: 1667.4, arm: 39.11, moment: 65212.48, model: 'R' },
     N98436: { weight: 1661.8, arm: 39.1604, moment: 65076.74, model: 'R' },
